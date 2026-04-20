@@ -8,10 +8,16 @@ object rolando {
  var capacidad = 0
  const artefactosEncontrados = [] 
  const cantArtefactos = {(mochila.size())}
+ const poderBase = 5
+ const poderPelea  = {artefacto => poderBase + artefacto.poderEn(self) }
 
 
 
 //Consultas
+
+method poderBase() {
+  return poderBase
+}
 
 method validarCapacidad() {
   if (cantArtefactos.apply() >= capacidad) {
