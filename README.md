@@ -41,7 +41,6 @@ El castillo de piedra es donde Rolando vive. Es tan grande que allí no hay lím
 #### Requerimientos
 
 Incorporar a los objetos el comportamiento que permita:
-
 - Hacer que rolando llegue a su hogar (el castillo)
 - Saber qué artefactos hay en el castillo
 

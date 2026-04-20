@@ -1,20 +1,22 @@
 import artefactos.*
+import castillo.*
+
 
 
 object rolando {
  const mochila = []
  var capacidad = 0
- const objetosEncima = {(mochila.size())}
+ const artefactosEncima = {(mochila.size())}
 
 //Consultas
 
 method validarCapacidad() {
-  if (objetosEncima.apply() >= capacidad) {
-    self.error("No hay capacidad" + objetosEncima.apply())
+  if (artefactosEncima.apply() >= capacidad) {
+    self.error("No hay capacidad" + artefactosEncima.apply())
     }
 }
 
-method artefactos() {
+method mochila() {
     return mochila
 }
 
@@ -23,6 +25,11 @@ method artefactos() {
 method recolectar(_artefacto) {
   self.validarCapacidad()
   mochila.add(_artefacto)
+}
+
+method alCastillo() {
+  castillo.salaArtefactos().addAll(mochila)
+  mochila.clear()
 }
 
 method encuentraArtefacto(_artefacto) {
