@@ -10,12 +10,12 @@ describe "Rolando llega al castillo" {
   test "description" {
     rolando.encuentraArtefacto(espadaDelDestino)
     rolando.encuentraArtefacto(libroDeHechizos)
-    rolando.alCastillo()
-    assert.equals([], rolando.mochila())
+    rolando.llegarA(castillo)
+    assert.equals(#{}, rolando.mochila())
     rolando.encuentraArtefacto(collarDivino)
-    rolando.alCastillo()
-    assert.equals([], rolando.mochila())
-    assert.equals([espadaDelDestino,libroDeHechizos,collarDivino], castillo.salaArtefactos())
+    rolando.llegarA(castillo)
+    assert.equals(#{}, rolando.mochila())
+    assert.equals(#{espadaDelDestino,libroDeHechizos,collarDivino}, castillo.inventario())
   }
 }
 

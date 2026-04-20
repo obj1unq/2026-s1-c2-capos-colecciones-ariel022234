@@ -1,0 +1,21 @@
+import capos.*
+import artefactos.*
+import castillo.*
+
+
+
+
+describe "Artefactos Totales" {
+  method initialize() {
+    rolando.setCapacidad(2)
+    rolando.recolectar(espadaDelDestino)
+    rolando.recolectar(collarDivino)
+    rolando.llegarA(castillo)
+    rolando.recolectar(armaduraDeAceroValkyrio)
+  }
+  test "Prueba de artefactos" {
+    assert.equals(3, rolando.cantArtsEnPosesion())
+    assert.notThat(rolando.tieneArtefacto(libroDeHechizos))
+  }
+
+}
