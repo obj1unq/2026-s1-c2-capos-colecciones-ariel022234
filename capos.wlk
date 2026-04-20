@@ -8,6 +8,8 @@ object rolando {
  var capacidad = 0
  const artefactosEncima = {(mochila.size())}
 
+
+
 //Consultas
 
 method validarCapacidad() {
@@ -18,6 +20,10 @@ method validarCapacidad() {
 
 method mochila() {
     return mochila
+}
+
+method artsEnPosesion() {
+  return mochila + castillo.salaArtefactos()
 }
 
 

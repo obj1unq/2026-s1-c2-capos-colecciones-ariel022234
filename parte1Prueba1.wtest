@@ -1,7 +1,7 @@
 import artefactos.*
 import capos.*
 
-describe "Rolando" {
+describe "Rolando encuentra artefactos" {
    method initialize() {
      rolando.setCapacidad(2)
    }
