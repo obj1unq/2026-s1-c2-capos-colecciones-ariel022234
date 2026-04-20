@@ -1,0 +1,15 @@
+import artefactos.*
+import capos.*
+
+describe "Rolando" {
+   method initialize() {
+     rolando.setCapacidad(2)
+   }
+
+  test "Recoleccion Artefactos" {
+    rolando.encuentraArtefacto(espadaDelDestino)
+    rolando.encuentraArtefacto(libroDeHechizos)
+    assert.throwsException({rolando.encuentraArtefacto(collarDivino)})
+    assert.equals ([espadaDelDestino,libroDeHechizos], rolando.artefactos())
+  }
+}
