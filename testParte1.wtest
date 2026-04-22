@@ -1,3 +1,4 @@
+import hechizos.*
 import artefactos.*
 import capos.*
 import castillo.*
@@ -66,6 +67,54 @@ describe "Recoleccion Objetos" {
     assert.equals(#{armaduraDeAceroValkyrio,collarDivino,espadaDelDestino,libroDeHechizos}, rolando.posesiones())
     assert.equals([espadaDelDestino,libroDeHechizos,collarDivino,armaduraDeAceroValkyrio,collarDivino], rolando.historialArtefactos()) 
   }
+
+  test "Poder de pelea antes de la batalla" {
+    rolando.setPoderBase(5)
+    rolando.setCapacidad(3)
+    rolando.mochila().addAll(#{espadaDelDestino,collarDivino,armaduraDeAceroValkyrio})
+    assert.equals(19, rolando.poderDePelea())
+
+  }
+
+  test "Poder de pelea desp 1ra batalla" {
+    rolando.setCapacidad(3)
+    rolando.setPoderBase(6)
+    rolando.mochila().addAll(#{espadaDelDestino,collarDivino,armaduraDeAceroValkyrio})
+    rolando.batalla()
+    assert.equals(18, rolando.poderDePelea())
+ }
+
+ test "Poder de pelea 2nda batalla" {
+   rolando.setCapacidad(3)
+    rolando.setPoderBase(7)
+    rolando.mochila().addAll(#{espadaDelDestino,collarDivino,armaduraDeAceroValkyrio})
+    rolando.batalla()
+    rolando.batalla()
+    assert.equals(21.5, rolando.poderDePelea())
+ }
+
+ test "Poder de pelea 3ra batalla" {
+   rolando.setCapacidad(3)
+    rolando.setPoderBase(8)
+    rolando.mochila().addAll(#{espadaDelDestino,collarDivino,armaduraDeAceroValkyrio})
+    rolando.batalla()
+    rolando.batalla()
+    rolando.batalla()
+    assert.equals(24, rolando.poderDePelea())
+ }
+
+ test "Poder libro de hechizos" {
+   rolando.setPoderBase(6)
+   rolando.setCapacidad(3)
+   rolando.mochila().add(libroDeHechizos)
+   libroDeHechizos.setHechizos([bendicion,invisibilidad,invocacion])
+   castillo.inventario().addAll(#{espadaDelDestino,armaduraDeAceroValkyrio,collarDivino})
+   assert.equals(4, libroDeHechizos.poder(rolando))
+   rolando.batalla() 
+   assert.equals(6,libroDeHechizos.poder(rolando))
+
+
+ }
 
 }
 
