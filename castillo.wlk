@@ -3,10 +3,10 @@ import capos.*
 
 
 object castillo {
-  const salaArtefactos = []
+  const inventario = #{}
 
-  method salaArtefactos() {
-    return salaArtefactos
+  method inventario() {
+    return inventario
   }
 
 
