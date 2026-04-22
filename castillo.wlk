@@ -1,5 +1,6 @@
-import artefactos.*
 import capos.*
+import artefactos.*
+
 
 
 object castillo {

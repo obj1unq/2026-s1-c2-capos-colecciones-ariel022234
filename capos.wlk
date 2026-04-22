@@ -52,11 +52,4 @@ method encuentraArtefacto(_artefacto) {
   historialArtefactos =  historialArtefactos + [_artefacto]
 }
 
-method setCapacidad(_capacidad) {
-  capacidad = _capacidad
-}
-
-
-
-
 }
