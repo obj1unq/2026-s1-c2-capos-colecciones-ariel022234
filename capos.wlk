@@ -47,6 +47,10 @@ method llegarA(lugar) {
   mochila.clear()
 }
 
+method setCapacidad(_capacidad) {
+  capacidad = _capacidad
+}
+
 method encuentraArtefacto(_artefacto) {
   self.recolectar(_artefacto)
   historialArtefactos =  historialArtefactos + [_artefacto]

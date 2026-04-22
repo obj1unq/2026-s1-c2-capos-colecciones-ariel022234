@@ -2,6 +2,7 @@ import artefactos.*
 import capos.*
 import castillo.*
 
+
 describe "Recoleccion Objetos" {
   test "Rolando recolecta Artefactos" {
     rolando.setCapacidad(2)
