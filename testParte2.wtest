@@ -1,0 +1,94 @@
+import capos.*
+import artefactos.*
+import hechizos.*
+import castillo.*
+import enemigos.*
+
+
+
+
+
+
+describe "Comportamiento Artefactos" {
+  test "Poder de pelea antes de la batalla" {
+    rolando.setPoderBase(5)
+    rolando.setCapacidad(3)
+    rolando.mochila().addAll(#{espadaDelDestino,collarDivino,armaduraDeAceroValkyrio})
+    assert.equals(19, rolando.poderDePelea())
+
+  }
+
+  test "Poder de pelea desp 1ra batalla" {
+    rolando.setCapacidad(3)
+    rolando.setPoderBase(6)
+    rolando.mochila().addAll(#{espadaDelDestino,collarDivino,armaduraDeAceroValkyrio})
+    rolando.batalla()
+    assert.equals(18, rolando.poderDePelea())
+ }
+
+ test "Poder de pelea 2nda batalla" {
+   rolando.setCapacidad(3)
+    rolando.setPoderBase(7)
+    rolando.mochila().addAll(#{espadaDelDestino,collarDivino,armaduraDeAceroValkyrio})
+    rolando.batalla()
+    rolando.batalla()
+    assert.equals(21.5, rolando.poderDePelea())
+ }
+
+ test "Poder de pelea 3ra batalla" {
+   rolando.setCapacidad(3)
+    rolando.setPoderBase(8)
+    rolando.mochila().addAll(#{espadaDelDestino,collarDivino,armaduraDeAceroValkyrio})
+    rolando.batalla()
+    rolando.batalla()
+    rolando.batalla()
+    assert.equals(24, rolando.poderDePelea())
+ }
+
+ test "Poder libro de hechizos" {
+   rolando.setPoderBase(6)
+   rolando.setCapacidad(3)
+   rolando.mochila().add(libroDeHechizos)
+   libroDeHechizos.setHechizos([bendicion,invisibilidad,invocacion])
+   castillo.inventario().addAll(#{espadaDelDestino,armaduraDeAceroValkyrio,collarDivino})
+   assert.equals(4, libroDeHechizos.poder(rolando))
+   assert.equals(10, rolando.poderDePelea())
+   rolando.batalla() 
+   assert.equals(6,libroDeHechizos.poder(rolando))
+   assert.equals(12, rolando.poderDePelea())
+   rolando.batalla()
+   assert.equals(6, libroDeHechizos.poder(rolando))
+   rolando.batalla()
+   assert.equals(0, libroDeHechizos.poder(rolando))
+   assert.equals(6, rolando.poderDePelea())
+}
+
+test "Pelea contra enemigos" {
+  const enemigos = #{caterina,archibaldo,astra}
+  rolando.setPoderBase(5)
+  rolando.setCapacidad(3)
+  rolando.mochila().addAll(#{espadaDelDestino,armaduraDeAceroValkyrio,collarDivino})
+  assert.equals(19, rolando.poderDePelea())
+  assert.equals(#{archibaldo, astra}, rolando.puedeVencerA(enemigos))
+  assert.equals(["Palacio de Marmol","Torre de Marfil"], rolando.moradasConquistables(enemigos))
+}
+
+test "Poderoso rolando" {
+  const enemigos = #{caterina,archibaldo,astra}
+  rolando.setPoderBase(10)
+  rolando.setCapacidad(3)
+  rolando.mochila().addAll(#{espadaDelDestino,armaduraDeAceroValkyrio,collarDivino})
+  assert.that(rolando.esPoderoso(enemigos))
+  
+}
+
+test "Artefacto Fatal" {
+  const enemigos = #{caterina,archibaldo,astra}
+  rolando.setPoderBase(15)
+  rolando.setCapacidad(3)
+  rolando.mochila().addAll(#{espadaDelDestino,armaduraDeAceroValkyrio,collarDivino})
+  assert.that(rolando.tieneArtefactoFatal(enemigos))
+  assert.equals(#{espadaDelDestino}, rolando.artefactoFatal(enemigos))
+}
+
+}

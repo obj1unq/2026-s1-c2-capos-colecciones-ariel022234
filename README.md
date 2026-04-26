@@ -41,7 +41,6 @@ El castillo de piedra es donde Rolando vive. Es tan grande que allí no hay lím
 #### Requerimientos
 
 Incorporar a los objetos el comportamiento que permita:
-
 - Hacer que rolando llegue a su hogar (el castillo)
 - Saber qué artefactos hay en el castillo
 
@@ -108,7 +107,7 @@ Los artefactos son elementos que aportan al personaje cierto poder que puede usa
 
 _Nota_ La regla del libro de hechizos se define más adelante.
 
-El poder de pelea de Rolando es el resultado de sumar su poder base (que inicialmente es 5) a la sumatoria de los poderes de pelea que le aportan los artefactos que tiene consigo. Cuando ocurre una batalla, se utilizan todos los artefactos que rolando lleva consigo, y además se incrementa en 1 el número base del poder de pelea de rolando. 
+El poder de pelea de Rolando es el resultado de sumar su poder base (que inicialmente es 5) a la sumatoria de los poderes de pelea que le aportan los artefactos que tiene consigo. Cuando ocurre una batalla, se utilizan todos los artefactos que rolando lleva consigo, y además se incremnta een 1 el número base del poder de pelea de rolando. 
 
 #### Requerimientos
 
