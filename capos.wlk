@@ -1,5 +1,7 @@
 import artefactos.*
 import castillo.*
+import enemigos.*
+
 
 
 
@@ -10,14 +12,40 @@ object rolando {
  var poderBase = 0
 
 
+
 //Consultas
 
+method esPoderoso(_enemigos) {
+  return _enemigos.all({enemigo => enemigo.poder() < self.poderDePelea()})
+}
+
+method tieneArtefactoFatal(enemigos) {
+  return mochila.any({artefacto => self.oneShotAlEnemigo(artefacto,enemigos) })
+}
+
+method artefactoFatal(enemigos) {
+  return mochila.filter({artefacto => self.oneShotAlEnemigo(artefacto,enemigos) })
+}
+
+method oneShotAlEnemigo(artefacto,enemigos) {
+  return enemigos.any({enemigo => enemigo.poder() < artefacto.poder(self) })
+}
+
+
  method artefactoMasPoderosoDe(vivienda) {
-        return vivienda.inventario().max({artefacto => artefacto.poder()})
+        return vivienda.inventario().max({artefacto => artefacto.poder(self)})
       }
 
 method poderDePelea() {
   return poderBase + mochila.sum({artefacto => artefacto.poder(self)})
+}
+
+method puedeVencerA(_listaEnemigos) {
+  return _listaEnemigos.filter({enemigo => enemigo.poder() < self.poderDePelea()})
+}
+
+method moradasConquistables(_enemigos) {
+  return self.puedeVencerA(_enemigos).map({enemigo => enemigo.morada()})
 }
 
 

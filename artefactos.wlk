@@ -34,7 +34,10 @@ object libroDeHechizos {
     }
 
     method usar() {
-      listaHechizos = listaHechizos.remove(listaHechizos.first())
+      if(listaHechizos != []){
+        listaHechizos = listaHechizos.drop(1)
+      }
+      
     }
 
 
